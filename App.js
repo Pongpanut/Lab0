@@ -6,6 +6,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
          {/* <//Root navigatorRef={nav => { this.navigator = nav }} /> */}
+         <Text>test</Text>
       </View>
     );
   }
