@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button ,TextInput ,Alert } from 'react-native';
 
-export default class App extends React.Component {
+export default class Login extends React.Component {
   
 
   constructor(props){
@@ -43,9 +43,6 @@ export default class App extends React.Component {
         <View style={styles.login_btn}>
           <Button onPress={this.props.onLoginPress} title="Login With Line" color="#77c8a7" />
         </View>
-       
-
-
       </View>
     );
   }

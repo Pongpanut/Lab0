@@ -14,13 +14,13 @@ import  JobListScreen  from './JobListScreen';
 
 
 
-/*const MainNavigator = TabNavigator({
+const MainNavigator = TabNavigator({
     joblist: {
         screen: JobListScreen,
     },
     map: { 
         screen: MapScreen },
-})*/
+})
 
 
 export default class HomeScreen extends Component {
@@ -33,7 +33,10 @@ export default class HomeScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>CodeSharing App</Text>
+                <Text>HomeScreen</Text>
+                <View style={styles.login_btn}>
+                     <Button onPress={this.props.onLogoutPress} title="Log out" color="#77c8a7" />
+                </View>
             </View>
         )
     }
@@ -45,5 +48,12 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: '#77c8a7',
-    }
+    } ,
+     login_btn: {
+        marginVertical: 5,
+        borderColor: 'white',
+        borderWidth: 2,
+        borderRadius: 5,
+        width: 200,
+      },
   });

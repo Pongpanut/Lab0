@@ -1,7 +1,7 @@
 import React from 'react';
-import { AppRegistry } from 'react-native';
-import {Login} from './screen/login';
-import {HomeScreen} from './screen/HomeScreen';
+import {AppRegistry} from 'react-native';
+import Login from './screen/login';
+import HomeScreen from './screen/HomeScreen';
 
 export default class App extends React.Component {
 
@@ -18,6 +18,7 @@ export default class App extends React.Component {
       return <Login
         onLoginPress={() => this.setState({ isLoggedIn: true })}
       />;
+
   }
 }
 AppRegistry.registerComponent(App , () => App );
