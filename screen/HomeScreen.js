@@ -4,8 +4,8 @@ import {
     ScrollView,
     Text,
     View,
-    Button,
-    AppRegistry
+    Button
+    
 } from 'react-native';
 
 import { TabNavigator, TabBarBottom } from 'react-navigation';
@@ -14,13 +14,13 @@ import  JobListScreen  from './JobListScreen';
 
 
 
-const MainNavigator = TabNavigator({
+/*const MainNavigator = TabNavigator({
     joblist: {
         screen: JobListScreen,
     },
     map: { 
         screen: MapScreen },
-})
+})*/
 
 
 export default class HomeScreen extends Component {
@@ -38,7 +38,6 @@ export default class HomeScreen extends Component {
         )
     }
 }
-AppRegistry.registerComponent('reactNav', () => HomeScreen);
 
 const styles = StyleSheet.create({
     container: {
