@@ -1,21 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { AppRegistry } from 'react-native';
+import {Login} from './screen/login';
+import {HomeScreen} from './screen/HomeScreen';
 
 export default class App extends React.Component {
+
+  state = {
+    isLoggedIn: false
+  }
+
   render() {
-    return (
-      <View style={styles.container}>
-         {/* <//Root navigatorRef={nav => { this.navigator = nav }} />  test*/}
-      </View>
-    );
+    if (this.state.isLoggedIn)
+      return <HomeScreen
+        onLogoutPress={() => this.setState({ isLoggedIn: false })}
+      />;
+    else
+      return <Login
+        onLoginPress={() => this.setState({ isLoggedIn: true })}
+      />;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+AppRegistry.registerComponent(App , () => App );
