@@ -6,13 +6,13 @@ import  JobListScreen  from '../screen/JobListScreen';
 
 const FeedNavigator = TabNavigator({
   list: { 
-    screen: MapScreen,
+    screen: JobListScreen,
     navigationOptions: {
       tabBarLabel: 'list',
     }
   },
-  offer: { 
-    screen: JobListScreen,
+  map: { 
+    screen: MapScreen,
     navigationOptions: {
       tabBarLabel: 'map',
     }
