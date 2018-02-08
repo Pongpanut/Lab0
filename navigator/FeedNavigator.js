@@ -1,27 +1,20 @@
 import React from 'react'
 import { TabNavigator, TabBarBottom, TabBarTop } from 'react-navigation'
-import  FeedScreen  from '../screen/FeedScreen';
-import  OfferScreen  from '../screen/OfferScreen';
-import  LogScreen  from '../screen/LogScreen';
+import  MapScreen  from '../screen/MapScreen';
+import  JobListScreen  from '../screen/JobListScreen';
 
 
-const MainNavigator = TabNavigator({
-  feed: { 
-    screen: FeedScreen,
+const FeedNavigator = TabNavigator({
+  list: { 
+    screen: MapScreen,
     navigationOptions: {
-      tabBarLabel: 'Feed',
+      tabBarLabel: 'list',
     }
   },
   offer: { 
-    screen: OfferScreen,
+    screen: JobListScreen,
     navigationOptions: {
-      tabBarLabel: 'Offer',
-    }
-  },
-  log: { 
-    screen: LogScreen,
-    navigationOptions: {
-      tabBarLabel: 'Log',
+      tabBarLabel: 'map',
     }
   }
 },
@@ -33,8 +26,11 @@ const MainNavigator = TabNavigator({
     inactiveBackgroundColor:  'grey',
     showLabel: true,
     style: {
-      paddingTop: 20,
-      height: 70,
+      shadowColor: 'black',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.15,
+      shadowRadius: 20,
+      height: 50,
       backgroundColor: '#FFFFFF',
       borderTopColor: 'transparent'
     },
@@ -50,4 +46,4 @@ const MainNavigator = TabNavigator({
   swipeEnabled: false,
 })
 
-export default MainNavigator
+export default FeedNavigator
