@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppRegistry } from 'react-native';
-import {Login} from './screen/login';
-import {HomeScreen} from './screen/HomeScreen';
+import Login from './screen/login';
+import HomeScreen from './screen/HomeScreen';
 
 export default class App extends React.Component {
 
