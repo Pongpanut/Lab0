@@ -5,7 +5,6 @@ import {
     View,
     Button
 } from 'react-native';
-import { TabNavigator, TabBarBottom } from 'react-native-navigation';
 
 
 
