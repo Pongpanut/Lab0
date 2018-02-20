@@ -1,5 +1,5 @@
 import React from 'react';
-import {AppRegistry} from 'react-native';
+import { AppRegistry } from 'react-native';
 import Login from './screen/login';
 import HomeScreen from './screen/HomeScreen';
 

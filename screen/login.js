@@ -35,13 +35,13 @@ export default class Login extends React.Component {
             />
       
         <View style={styles.login_btn}>
-          <Button onPress={this.props.onLoginPress} title="Login With Facebook" color="#77c8a7" />
+          <Button onPress={this.props.onLoginPress} title="Login With Facebook" color="white" />
         </View>
         <View style={styles.login_btn}>
-          <Button onPress={this.props.onLoginPress} title="Login With Email" color="#77c8a7" />
+          <Button onPress={this.props.onLoginPress} title="Login With Email" color="white" />
         </View>
         <View style={styles.login_btn}>
-          <Button onPress={this.props.onLoginPress} title="Login With Line" color="#77c8a7" />
+          <Button onPress={this.props.onLoginPress} title="Login With Line" color="white" />
         </View>
       </View>
     );
