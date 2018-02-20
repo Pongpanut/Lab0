@@ -25,25 +25,49 @@ const styles = StyleSheet.create({
         height: null
       },
   })
-  
+  const DEFAULT_LATITUDE_DELTA = 0.13
+  const DEFAULT_LONGITUDE_DELTA = 0.13
 
 export default class MapScreen extends Component {
-    
+    state = {}
+
     static navigationOptions = {
 		title: 'MapScreen',
     };
 
+    getLocationSuccess(position){
+        let latitude = position.coords.latitude
+        let longitude = position.coords.longitude
+        const region = {
+            latitude : latitude,
+            longitude :longitude,
+            latitudeDelta: DEFAULT_LATITUDE_DELTA,
+            longitudeDelta: DEFAULT_LONGITUDE_DELTA,
+        }
+        this.setState({ region })
+    }
+
+    componentDidMount() {
+        navigator.geolocation.getCurrentPosition(
+        (position) => this.getLocationSuccess(position),
+        (error) =>alert(error),
+        { enableHighAccuracy: true, timeout: 20000, maximumAge: 10000 });
+    }
+
     onRegionChangeComplete() {
-        alert('move')
+        // alert('move')
     }
 
     render() {
+        const { region } = this.state
+
         return (
             <View style={styles.mapContainer}>
               <MapView
                 ref="map"
                 style={styles.map}
                 showsMyLocationButton={true}
+                initialRegion={region}
                 showsUserLocation={true}
                 onRegionChangeComplete={this.onRegionChangeComplete}
                 />

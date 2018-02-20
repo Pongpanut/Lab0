@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, Text, View, Button } from 'react-native';
+import { StyleSheet, ScrollView, Text, View, Button, FlatList } from 'react-native';
 import { TabNavigator, TabBarBottom, TabBarTop} from 'react-navigation';
 import MainNavigator from '../navigator/MainNavigator'
 
@@ -20,6 +20,13 @@ export default class ListScreen extends Component {
     }
 
     render() {
-        return <View><Text>ListScreen</Text></View>
+        return (
+            <View style={styles.container}>
+             <FlatList
+                data={[{key: 'a'}, {key: 'b'}]}
+                renderItem={({item}) => <Text>{item.key}</Text>}
+                />
+            </View>
+          )
     }
 }
