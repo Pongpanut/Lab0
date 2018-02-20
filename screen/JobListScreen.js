@@ -20,7 +20,25 @@ const styles = StyleSheet.create({
         borderBottomWidth: 4,
         borderRightWidth:  4,
         borderLeftWidth:  4,
-        height: 100
+        height: 100,
+        flexDirection: 'row',
+    },
+    jobDesc:{
+      marginTop: 15,
+      flexDirection: 'column',
+    },
+    jobImageContainer:{
+      marginLeft: 20,
+      width: 120
+    },
+    jobImage:{
+       height:95,
+       width: 95,
+       borderWidth: 1,
+       borderColor:'#77c8a7' ,
+       padding: 10,
+       paddingLeft: 30,
+
     }
   });
 
@@ -42,12 +60,14 @@ export default class JobListScreen extends Component {
     render() {
 
         const data = [
-            {title: 'Job1', key: 'item1', location : 'sukhumwit', spec :'../image/jobimage.jpeg'},
-            {title: 'Job2', key: 'item2', location : 'rama V', spec :''},
-            {title: 'Job3', key: 'item3', location : 'rama IV', spec :''},
-            {title: 'Job4', key: 'item4', location : 'ratchada', spec :''},
-            {title: 'Job5', key: 'item5', location : 'ratchayothin', spec :''},
-            {title: 'Job6', key: 'item6', location : 'Lak si', spec :'../image/jobimage.jpeg'},
+            {title: 'Job1', key: 'item1',date: '11/03/2017', location : 'sukhumwit', spec: 'man',image :'../image/jobimage.jpeg'},
+            {title: 'Job2', key: 'item2',date: '13/02/2017', location : 'rama V', spec :'woman'},
+            {title: 'Job3', key: 'item3',date: '21/05/2017', location : 'rama IV', spec :'woman'},
+            {title: 'Job4', key: 'item4',date: '01/04/2017', location : 'ratchada', spec :'man'},
+            {title: 'Job5', key: 'item5',date: '19/02/2017', location : 'ratchayothin', spec :'man'},
+            {title: 'Job6', key: 'item6',date: '30/05/2017', location : 'Lak si', spec:'woman', image :'../image/jobimage.jpeg'},
+            {title: 'Job7', key: 'item7',date: '30/03/2017', location : 'Don mueng', spec:'man', image :'../image/jobimage.jpeg'},
+
         ]
         return (
             <View style={styles.container}>
@@ -60,7 +80,16 @@ export default class JobListScreen extends Component {
                     onHideUnderlay={separators.unhighlight}>
                     <View style={styles.listContainer}>
                       {/* <Image  source={require('../image/jobimage.jpeg')} /> */}
-                      <Text>{item.title}</Text>
+                      
+                      <View style={styles.jobImageContainer}>
+                        <Image style={styles.jobImage} source={require('../image/jobimage.jpeg')} />
+                      </View>
+                      <View style={styles.jobDesc}>
+                        <Text>Job title : {item.title}</Text>
+                        <Text>Location : {item.location}</Text>
+                        <Text>Date: {item.data}</Text>
+                        <Text>Spec {item.spec}</Text>
+                      </View>
                     </View>
                   </TouchableHighlight>
                 )}
