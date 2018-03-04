@@ -46,6 +46,16 @@ export default class Login extends React.Component {
             <Text  style={styles.facebookText}>Login with facebook</Text>
           </TouchableOpacity>
         </View>
+
+        <View style={styles.additional}>
+          <TouchableOpacity style={styles.flexrow}>
+            <Text  style={styles.orText}>Forgot password ?   </Text>
+          </TouchableOpacity>
+          <Text  style={styles.orText}>|</Text>
+          <TouchableOpacity style={styles.flexrow}>
+            <Text  style={styles.orText}>   Create an account</Text>
+          </TouchableOpacity>
+        </View>
     
       </View>
     );
@@ -64,6 +74,10 @@ export default class Login extends React.Component {
 
 
 const styles = StyleSheet.create({
+  additional:{
+      flexDirection: 'row',
+      marginTop: 20,
+  },
   container: {
     flex: 10,
     justifyContent: 'center',
