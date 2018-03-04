@@ -67,6 +67,7 @@ export default class JobListScreen extends Component {
             {title: 'Job5', key: 'item5',date: '19/02/2017', location : 'ratchayothin', spec :'man'},
             {title: 'Job6', key: 'item6',date: '30/05/2017', location : 'Lak si', spec:'woman', image :'../image/jobimage.jpeg'},
             {title: 'Job7', key: 'item7',date: '30/03/2017', location : 'Don mueng', spec:'man', image :'../image/jobimage.jpeg'},
+            {title: 'Job8', key: 'item8',date: '30/03/2017', location : 'Don mueng', spec:'man', image :'../image/jobimage.jpeg'},
 
         ]
         return (

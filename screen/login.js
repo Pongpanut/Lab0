@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button ,TextInput ,Alert } from 'react-native';
+import { StyleSheet, Text, View, Button ,TextInput ,Alert, Image ,TouchableOpacity} from 'react-native';
 
 export default class Login extends React.Component {
   
@@ -15,7 +15,7 @@ export default class Login extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.Logo}>LAB0</Text>
+        <Image style={styles.Logo} source={require('../image/logo.png')} />
         <View style={{ margin: 7 }} />
           <TextInput  placeholder="Username" 
                       style={styles.input_login} 
@@ -34,15 +34,19 @@ export default class Login extends React.Component {
                    
             />
       
-        <View style={styles.login_btn}>
-          <Button onPress={this.props.onLoginPress} title="Login With Facebook" color="white" />
+        <View style={styles.login}>
+          <Button onPress={this.props.onLoginPress} title="Login" color="white" />
         </View>
-        <View style={styles.login_btn}>
-          <Button onPress={this.props.onLoginPress} title="Login With Email" color="white" />
+        <View >
+          <Text  style={styles.orText}>OR</Text>
         </View>
-        <View style={styles.login_btn}>
-          <Button onPress={this.props.onLoginPress} title="Login With Line" color="white" />
+        <View style={styles.login_facebook}>
+          <TouchableOpacity style={styles.flexrow}>
+            <Image style={styles.facebookLogo} source={require('../image/facebook.png')} />
+            <Text  style={styles.facebookText}>Login with facebook</Text>
+          </TouchableOpacity>
         </View>
+    
       </View>
     );
   }
@@ -64,26 +68,59 @@ const styles = StyleSheet.create({
     flex: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#77c8a7',
+    backgroundColor: '#009688',
   },
   Logo: {
-    fontSize: 60,
-    textAlign: 'center',
     margin: 10,
-    color: '#fff',
-    marginBottom: 50,
+    marginBottom: 20,
+  },
+  flexrow:{
+    flexDirection: 'row',
+  },
+  orText:{
+    color: 'white',
+    marginTop: 10,
+    fontSize: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  facebookLogo: {
+  //  display: 'flex',
+    flexDirection: 'row',
+    width:30,
+    height:30,
+    marginLeft: 25,
+    marginTop: 5,
+  },
+  facebookText:{
+    color:'white',
+    fontSize: 20,
+    marginTop: 7,
+    marginLeft: 35,
   },
   instructions: {
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
   },
-  login_btn: {
-    marginVertical: 5,
-    borderColor: 'white',
-    borderWidth: 2,
-    borderRadius: 5,
-    width: 200,
+  login: {
+    marginTop: 20,
+    backgroundColor: '#33bc6e',
+    marginBottom: 5,
+    height: 50, 
+    width:300,
+    paddingTop: 5,
+    borderRadius: 20,
+    
+  },
+  login_facebook: {
+    marginTop: 20,
+    backgroundColor: '#157dc3',
+    marginBottom: 5,
+    height: 50, 
+    width:300,
+    paddingTop: 5,
+    borderRadius: 20,
   },
   login_label: {
     fontSize: 20,
@@ -93,11 +130,14 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   input_login:{
-    height: 40, 
+    backgroundColor: 'white',
+    marginBottom: 5,
+    height: 50, 
     fontSize:20,
-    width:200,
-    color:'#fff',
+    width:300,
+    color:'grey',
     textAlign: 'center',
+    borderRadius: 20,
   }
 });
 
