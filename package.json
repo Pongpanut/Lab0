@@ -44,7 +44,7 @@
     "react-native-splash-screen": "^3.0.6",
     "react-native-svg": "^5.3.0",
     "react-native-swiper": "^1.5.13",
-    "react-native-vector-icons": "^4.4.3",
+    "react-native-vector-icons": "^4.5.0",
     "react-navigation": "^1.0.0-beta.23",
     "redux-zero": "^4.9.1"
   }

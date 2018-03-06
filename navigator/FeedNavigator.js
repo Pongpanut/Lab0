@@ -20,19 +20,21 @@ const FeedNavigator = TabNavigator({
 },
 {
   tabBarOptions: {
-    activeTintColor: '#77c8a7',
-    inactiveTintColor: 'grey',
-    activeBackgroundColor: 'white',
-    inactiveBackgroundColor:  'grey',
+    activeTintColor: 'white',
+    inactiveTintColor: '#77c8a7',
+    activeBackgroundColor: '#77c8a7',
+    inactiveBackgroundColor:  'white',
     showLabel: true,
     style: {
       shadowColor: 'black',
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.15,
       shadowRadius: 20,
-      height: 50,
+      height: 40,
       backgroundColor: '#FFFFFF',
-      borderTopColor: 'transparent'
+      borderTopColor: 'transparent',
+      borderBottomColor: '#77c8a7',
+      borderBottomWidth: 2 
     },
     labelStyle: {
       fontWeight: 'bold',
@@ -41,7 +43,7 @@ const FeedNavigator = TabNavigator({
       paddingBottom: 6,
     }
   },
-  tabBarComponent: TabBarTop,
+  tabBarComponent: TabBarBottom,
   tabBarPosition: 'top',
   swipeEnabled: false,
 })
