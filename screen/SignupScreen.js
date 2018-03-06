@@ -1,7 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button ,TextInput ,Alert, Image ,TouchableOpacity} from 'react-native';
 
-export default class Login extends React.Component {
+export default class SignupScreen extends React.Component {
+  
+
   constructor(props){
     super(props);
     this.state ={
@@ -31,30 +33,26 @@ export default class Login extends React.Component {
                     onChangeText={(password)=> this.setState({password})}
                    
             />
+        <TextInput  placeholder="Confirm Password" 
+          style={styles.input_login} 
+          ref="password" 
+          underlineColorAndroid='transparent'
+          secureTextEntry={true}
+          onChangeText={(password)=> this.setState({password})}
+        />
       
         <View style={styles.login}>
-          <Button onPress={this.props.onLoginPress} title="Login" color="white" />
+          <Button  title="SIGN UP" color="white" />
         </View>
         <View >
           <Text  style={styles.orText}>OR</Text>
         </View>
         <View style={styles.login_facebook}>
-          <TouchableOpacity style={styles.flexrow} >
-            <Image style={styles.facebookLogo} source={require('../image/facebook.png')} />
-            <Text  style={styles.facebookText}>Login with facebook</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.additional}>
           <TouchableOpacity style={styles.flexrow}>
-            <Text  style={styles.orText}>Forgot password ?   </Text>
-          </TouchableOpacity>
-          <Text  style={styles.orText}>|</Text>
-          <TouchableOpacity style={styles.flexrow}  onPress={this.props.onSignupPress}>
-            <Text  style={styles.orText}>   Create an account</Text>
+            <Image style={styles.facebookLogo} source={require('../image/facebook.png')} />
+            <Text  style={styles.facebookText}>SIGN UP WITH FACEBOOK</Text>
           </TouchableOpacity>
         </View>
-    
       </View>
     );
   }
@@ -72,10 +70,6 @@ export default class Login extends React.Component {
 
 
 const styles = StyleSheet.create({
-  additional:{
-      flexDirection: 'row',
-      marginTop: 20,
-  },
   container: {
     flex: 10,
     justifyContent: 'center',
@@ -106,9 +100,9 @@ const styles = StyleSheet.create({
   },
   facebookText:{
     color:'white',
-    fontSize: 20,
-    marginTop: 7,
-    marginLeft: 35,
+    fontSize: 16,
+    marginTop: 12,
+    marginLeft: 20,
   },
   instructions: {
     textAlign: 'center',
