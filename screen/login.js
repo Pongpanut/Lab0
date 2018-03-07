@@ -32,8 +32,13 @@ export default class Login extends React.Component {
                    
             />
       
-        <View style={styles.login}>
+        {/* <View style={styles.login}>
           <Button onPress={this.props.onLoginPress} title="Login" color="white" />
+        </View> */}
+        <View style={styles.login}>
+          <TouchableOpacity onPress={this.props.onLoginPress}  >
+            <Text  style={styles.login_label}>Login</Text>
+          </TouchableOpacity>
         </View>
         <View >
           <Text  style={styles.orText}>OR</Text>
