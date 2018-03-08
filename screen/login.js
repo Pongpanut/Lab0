@@ -1,12 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button ,TextInput ,Alert, Image ,TouchableOpacity} from 'react-native';
+import ApiUtils from '../util/ApiUtils'
+import PopupDialog, { DialogTitle } from 'react-native-popup-dialog';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class Login extends React.Component {
   constructor(props){
     super(props);
     this.state ={
         username :'',
-        password:''
+        password:'',
+        member: '',
+        verifyUser: false
     };
 }
 
@@ -18,6 +23,7 @@ export default class Login extends React.Component {
           <TextInput  placeholder="Username" 
                       style={styles.input_login} 
                       ref="username" 
+                      autoCapitalize = 'none'
                       underlineColorAndroid='transparent'
                       onChangeText={(username)=> this.setState({username})}
                      
@@ -26,6 +32,7 @@ export default class Login extends React.Component {
         <TextInput  placeholder="Password" 
                     style={styles.input_login} 
                     ref="password" 
+                    autoCapitalize = 'none'
                     underlineColorAndroid='transparent'
                     secureTextEntry={true}
                     onChangeText={(password)=> this.setState({password})}
@@ -36,7 +43,7 @@ export default class Login extends React.Component {
           <Button onPress={this.props.onLoginPress} title="Login" color="white" />
         </View> */}
         <View style={styles.login}>
-          <TouchableOpacity onPress={this.props.onLoginPress}  >
+          <TouchableOpacity onPress={this.login}  >
             <Text  style={styles.login_label}>Login</Text>
           </TouchableOpacity>
         </View>
@@ -59,19 +66,69 @@ export default class Login extends React.Component {
             <Text  style={styles.orText}>   Create an account</Text>
           </TouchableOpacity>
         </View>
-    
+        
+        <PopupDialog
+          width= {0.5}
+          height= {0.2}
+          ref={(popupDialog) => { this.popupDialog = popupDialog; }}
+        >
+          <View style={styles.popupDialog}>
+            <View style={styles.popupIcon}>
+              <Icon  containerStyle={{ marginTop: 26, marginLeft: 20 }} name="ban" size={70} color={'#77c8a7'}/>
+            </View>
+            <Text style={styles.popupText}>incorrect Password</Text>
+          </View>
+        </PopupDialog>
       </View>
     );
   }
 
-  login= ()=>{
-    if(this.state.username=='admin'){
-      this.props.onLoginPress;
-    }else{
-      this.props.onLogoutPress;
-    }
+  verifyUser= ()=>{
+    return fetch('https://lab0api.herokuapp.com/api/member/verifyUser',{
+      method: 'post',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({"username":"petch","password":"1234"})
+      }).then((res) =>  console.log(res.json()));
   }
 
+
+  login= ()=>{
+    // var res = ApiUtils.verifyUser(this.state.username, this.state.password)
+    // Need to move logic to ApiUtil
+
+    fetch('https://lab0api.herokuapp.com/api/member/verifyUser',{
+      method: 'post',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        'username': this.state.username,
+        'password': this.state.password,
+      }),
+      })
+      .then(response => 
+        response.json().then(data => ({
+            data: data,
+            status: response.status
+        })
+      ).then(res => {
+          if(res.status == '200' && res.data.status){
+            console.log(this.props);
+            this.props.onLoginPress()
+            //navigate.navigate('homescreen')
+          }
+          else{
+            this.popupDialog.show(() => {
+              console.log('callback - will be called immediately')
+            });
+            console.log('incorrect user or pass');
+          }
+      }));
+  }
 }
 
 
@@ -86,6 +143,27 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#009688',
+  },
+  popupDialog:{
+    paddingTop: 20,
+    backgroundColor: '#F0F0F5',
+    height: 140
+  },
+  popupIcon:{
+    // flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    display:'flex',
+    justifyContent:'center'
+  },
+  popupText:{
+    display: 'flex',
+    fontSize: 20,
+    alignItems: 'center',
+    paddingLeft: 10,
+    paddingTop: 10,
+    color:'#6E6E9E',
+    justifyContent: 'center'
   },
   Logo: {
     margin: 10,

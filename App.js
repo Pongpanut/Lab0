@@ -21,10 +21,13 @@ export default class App extends React.Component {
         onLogoutPress={() => this.setState({ isLoggedIn: false })}
       />;
     else
-      return <Login onLoginPress={() => this.setState({ isLoggedIn: true })}
-                    // onSignupPress={() => this.setState({ isSignup: true })}
-                    onSignupPress={() => this.setState({ isSignup: true })}
-             />;
+      return <HomeScreen
+      onLogoutPress={() => this.setState({ isLoggedIn: false })}
+    />;
+      // return <Login onLoginPress={() =>  this.setState({ isLoggedIn: true })}
+      //               // onSignupPress={() => this.setState({ isSignup: true })}
+      //               onSignupPress={() => this.setState({ isSignup: true })}
+      //        />;
 
   }
 }

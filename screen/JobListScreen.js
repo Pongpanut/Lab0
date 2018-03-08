@@ -16,37 +16,65 @@ const styles = StyleSheet.create({
     listContainer:{
         backgroundColor: 'white',
         width: width,
-        borderColor: '#77c8a7',
+        borderColor: '#bce5d4',
         borderBottomWidth: 4,
         borderRightWidth:  4,
         borderLeftWidth:  4,
-        height: 100,
+        height: 150,
         flexDirection: 'row',
     },
     jobDesc:{
+      marginLeft: 10,
+      flex:1,
       marginTop: 15,
       flexDirection: 'column',
     },
     jobImageContainer:{
-      marginLeft: 20,
+      flex:1,
+      flexDirection: 'column',
+      marginTop: 15,
+      marginLeft: 80,
       width: 120
     },
     jobImage:{
-       height:95,
-       width: 95,
-       borderWidth: 1,
-       borderColor:'#77c8a7' ,
+       height:85,
+       width: 125,
        padding: 10,
        paddingLeft: 30,
 
+    },
+    descText:{
+      color: 'grey',
+      fontSize: 18,
+    },
+    priceText:{
+      color: 'grey',
+      fontSize: 15,
+    },
+    imageContainer:{
+      marginTop: 5,
+      shadowColor: 'grey',
+      shadowOffset: { width: 0, height: 2 },
+      height:85,
+      width: 125,
+      shadowOpacity: 0.8,
+      shadowRadius: 2,
+      elevation: 1,
     }
   });
 
+  const data = null;
+    
 
 export default class JobListScreen extends Component {
     static navigationOptions = {
 		title: 'JobListScreen',
     };
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+
     
     _renderItem = ({ item }) => {
     
@@ -56,24 +84,27 @@ export default class JobListScreen extends Component {
         )
       }
 
+    componentDidMount(){
+        data = [
+          {title: 'Event staff', key: 'item1',date: 'Feb 15-17', time: '09.00 - 18.00', location : 'sukhumwit', price: '$30', pricedesc:'$10/day',image :'../image/jobimage.jpeg'},
+          {title: 'Data Entry', key: 'item2',date: 'Feb 15', time: '14.00 - 16.00',location : 'rama V', price :'$20',  pricedesc:'$20/day'},
+          {title: 'Event staff', key: 'item3',date: 'Feb 15-16', time: '10.00 - 12.00', location : 'rama IV', price :'$100',  pricedesc:'$50/day'},
+          {title: 'Cashier', key: 'item4',date: 'Feb 15-18', time: '13.00 - 15.00',location : 'ratchada', price :'$40',  pricedesc:'$10/day'},
+          {title: 'Dancer', key: 'item5',date: 'Feb 19-20', time: '12.00 - 22.00',location : 'ratchayothin', price :'$70',  pricedesc:'$35/day'},
+          {title: 'Staff', key: 'item6',date: 'Feb 20-22', time: '18.00 - 23.00',location : 'Lak si', price:'$30',  pricedesc:'$10/day',image :'../image/jobimage.jpeg'},
+          {title: 'Sales', key: 'item7',date: 'Feb 25-26', time: '06.00 - 10.00',location : 'Don mueng', price:'$40', pricedesc:'$20/day',image :'../image/jobimage.jpeg'},
+          {title: 'Data Entry', key: 'item8',date: 'Feb 15-16', time: '12.00 - 13.00',location : 'Don mueng', price:'$30', pricedesc:'$15/day' , image :'../image/jobimage.jpeg'},
+
+      ]
+      this.setState({ jobdata: data })
+    }
+
 
     render() {
-
-        const data = [
-            {title: 'Job1', key: 'item1',date: '11/03/2017', location : 'sukhumwit', spec: 'man',image :'../image/jobimage.jpeg'},
-            {title: 'Job2', key: 'item2',date: '13/02/2017', location : 'rama V', spec :'woman'},
-            {title: 'Job3', key: 'item3',date: '21/05/2017', location : 'rama IV', spec :'woman'},
-            {title: 'Job4', key: 'item4',date: '01/04/2017', location : 'ratchada', spec :'man'},
-            {title: 'Job5', key: 'item5',date: '19/02/2017', location : 'ratchayothin', spec :'man'},
-            {title: 'Job6', key: 'item6',date: '30/05/2017', location : 'Lak si', spec:'woman', image :'../image/jobimage.jpeg'},
-            {title: 'Job7', key: 'item7',date: '30/03/2017', location : 'Don mueng', spec:'man', image :'../image/jobimage.jpeg'},
-            {title: 'Job8', key: 'item8',date: '30/03/2017', location : 'Don mueng', spec:'man', image :'../image/jobimage.jpeg'},
-
-        ]
         return (
             <View style={styles.container}>
              <FlatList
-                data={data}
+                data={this.state.jobdata}
                 renderItem={({item, separators}) => (
                   <TouchableHighlight
                     onPress={() => this._onPress(item)}
@@ -82,14 +113,18 @@ export default class JobListScreen extends Component {
                     <View style={styles.listContainer}>
                       {/* <Image  source={require('../image/jobimage.jpeg')} /> */}
                       
-                      <View style={styles.jobImageContainer}>
-                        <Image style={styles.jobImage} source={require('../image/jobimage.jpeg')} />
-                      </View>
+                    
                       <View style={styles.jobDesc}>
-                        <Text>Job title : {item.title}</Text>
-                        <Text>Location : {item.location}</Text>
-                        <Text>Date: {item.data}</Text>
-                        <Text>Spec {item.spec}</Text>
+                        <Text style={styles.descText}>{item.title}</Text>
+                        <Text style={styles.descText}>{item.date} @ {item.location}</Text>
+                        <Text style={styles.descText}>{item.time}</Text>
+                      </View>
+                      <View style={styles.jobImageContainer}>
+                        <Text style={styles.priceText}>{item.price}</Text>
+                        <Text style={styles.priceText}>({item.pricedesc})</Text>
+                        <View style={styles.imageContainer}>
+                          <Image style={styles.jobImage} source={require('../image/jobimage.jpeg')} />
+                        </View>
                       </View>
                     </View>
                   </TouchableHighlight>
